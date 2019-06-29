@@ -1,0 +1,52 @@
+<form class="k-form" [formGroup]="addBlogForm" (ngSubmit)="saveForm()" novalidate>
+  <label class="k-form-field">
+      <span>
+        Required field <span class="k-required">*</span>
+      </span>
+      <input class="k-textbox" placeholder="Your Name" />
+  </label>
+
+  <label class="k-form-field">
+      <span>
+        Field info<span class="k-field-info">optional</span>
+      </span>
+      <input class="k-textbox" placeholder="Your Company" />
+  </label>
+
+  <label class="k-form-field">
+      <span>
+        Required field with field info<span class="k-field-info k-required">required</span>
+      </span>
+      <input class="k-textbox" placeholder="Your PIN" />
+  </label>
+
+  <button class="k-button k-primary">Primary button</button>
+</form>
+<!--
+<form [formGroup]="addBlogForm" (ngSubmit)="saveForm()" novalidate>
+  <div class="form-group">
+    <label for="inputTitle">Title</label>
+    <input type="text" class="form-control" id="inputTitle" formControlName="txtTitle" placeholder="Enter title">
+    <div *ngIf="addBlogForm.get('txtTitle').errors?.required" style="color:red; font-size: small">
+      Please choose a title.
+    </div>
+    <div *ngIf="addBlogForm.get('txtTitle').errors?.minlength" style="color:red; font-size: small">
+      Title must be greater than 2 characters.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputIntro">Title</label>
+    <input type="text" class="form-control" id="inputIntro" formControlName="txtIntro" placeholder="Enter introduction">
+    <div *ngIf="addBlogForm.get('txtIntro').errors?.required" style="color:red; font-size: small">
+      Please choose a introduction.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputContent">Title</label>
+    <ckeditor [editor]="Editor" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic' ] }" id="inputContent" formControlName="txtContent" data="<p>Hello, world!</p>"></ckeditor>
+    <div *ngIf="addBlogForm.get('txtContent').errors?.required" style="color:red; font-size: small">
+      Please choose a content.
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
