@@ -1,6 +1,6 @@
 {
   "webapi": {
-    "baseUrl": "http://localhost:4200/",
+    "baseUrl": "http://localhost:5000/",
     "IdpService": "https://host20190518035658.azurewebsites.net/"
   }
 }

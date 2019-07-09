@@ -3,6 +3,13 @@
 [pageSize]="pageSize"
 [skip]="skip"
 [pageable]="true"
+[sortable]="{
+    allowUnsort: allowUnsort,
+    mode: multiple ? 'multiple' : 'single'
+    }"
+  [sort]="sort"
+  (sortChange)="sortChange($event)"
+>
 [height]="400"
 (pageChange)="pageChange($event)">
 </kendo-grid>

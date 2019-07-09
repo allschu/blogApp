@@ -8,6 +8,7 @@ import { DetailBlogComponent } from './detail-blog/detail-blog.component';
 import { RouterModule } from '@angular/router';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { BlogServiceService } from './blog-service.service';
 
 @NgModule({
   declarations: [AddBlogComponent, BlogListComponent, EditBlogComponent, DetailBlogComponent],
@@ -26,6 +27,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
     CKEditorModule,
     ReactiveFormsModule
 
-  ]]
+  ]],
+  providers: [BlogServiceService]
 })
 export class BlogModule { }
