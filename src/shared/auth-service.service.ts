@@ -19,11 +19,13 @@ export class AuthServiceService {
     // tslint:disable-next-line: prefer-const
     let config = {
       authority: this.idp,
-      client_id: 'clientapi',
-      scope: 'openid clientapi profile',
+      client_id: 'angular_spa',
+      scope: 'openid profile webapi',
       response_type: 'id_token token',
       redirect_uri: this.basePath + 'authCallback',
-      post_logout_redirect_uri: this.basePath + 'signout-callback-oidc'
+      post_logout_redirect_uri: this.basePath + 'signout-callback-oidc',
+      automaticSilentRenew: true,
+      silent_redirect_uri: this.basePath + 'silentRedirect'
     };
 
     if (this._userManager === undefined) {
@@ -31,12 +33,12 @@ export class AuthServiceService {
       this._userManager.getUser().then(user => {
 
         if (user && !user.expired) {
-          console.log("set user");
+          console.log('set user');
           this._user = user;
         }
       });
     } else {
-      console.log("use existing userManager");
+      console.log('use existing userManager');
     }
   }
 

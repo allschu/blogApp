@@ -9,7 +9,10 @@ import { BlogModule } from 'src/blog/blog.module';
 import { ReturnComponent } from '../shared/return/return.component';
 import { NavMenuComponent } from '../shared/nav-menu/nav-menu.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AuthInterceptor } from 'src/shared/authinterceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { SilentRenewComponent } from 'src/shared/silent-renew/silent-renew.component';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -18,6 +21,7 @@ export function initializeApp(appConfig: AppConfig) {
   declarations: [
     AppComponent,
     ReturnComponent,
+    SilentRenewComponent,
     NavMenuComponent
   ],
   imports: [
@@ -26,16 +30,18 @@ export function initializeApp(appConfig: AppConfig) {
     AppRoutingModule,
     AngularFontAwesomeModule,
     RouterModule.forRoot([
-      { path: 'authCallback', component: ReturnComponent }
+      { path: 'authCallback', component: ReturnComponent },
+      { path: 'silentRedirect', component: SilentRenewComponent }
     ]),
     BlogModule
   ],
-  providers: [AppConfig,
+  providers: [AppConfig, , { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
       deps: [AppConfig], multi: true
-    },],
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
