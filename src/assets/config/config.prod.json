@@ -2,6 +2,6 @@
   "webapi": {
     "baseUrl": "http://localhost:4200/",
     "resourceUrl": "http://localhost:5001/",
-    "IdpService": "http://localhost:5000/"
+    "IdpService": "https://identityserver4allard.azurewebsites.net/"
   }
 }

@@ -15,6 +15,14 @@ export class BlogServiceService {
 
   constructor(private http: HttpClient, private authService: AuthServiceService) { }
 
+  addBlog(blogToPost: BlogClass): Observable<BlogClass> {
+    return this.http.post<BlogClass>(this.basePath + 'api/blog/blog', blogToPost)
+          .pipe(
+            tap(_ => console.log('Adds blog')),
+            catchError(this.handleError<BlogClass>('Add blog', ))
+          );
+  }
+
   getBlogs(): Observable<BlogClass[]> {
     // let token = this.authService.getAccessToken();
     // console.log(token);

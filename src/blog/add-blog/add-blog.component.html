@@ -1,26 +1,33 @@
 <form class="k-form" [formGroup]="addBlogForm" (ngSubmit)="saveForm()" novalidate>
   <label class="k-form-field">
       <span>
-        Required field <span class="k-required">*</span>
+        Title  <span class="k-field-info k-required">required</span>
       </span>
-      <input class="k-textbox" placeholder="Your Name" />
+      <input class="k-textbox" formControlName="txtTitle" placeholder="Title" />
   </label>
 
   <label class="k-form-field">
       <span>
-        Field info<span class="k-field-info">optional</span>
+        Introduction <span class="k-field-info k-required">required</span>
       </span>
-      <input class="k-textbox" placeholder="Your Company" />
+      <input class="k-textbox" formControlName="txtIntro" placeholder="Introduction" />
   </label>
 
   <label class="k-form-field">
       <span>
-        Required field with field info<span class="k-field-info k-required">required</span>
+        Author <span class="k-field-info k-required">required</span>
       </span>
-      <input class="k-textbox" placeholder="Your PIN" />
+      <input class="k-textbox" formControlName="txtAuthor" placeholder="Author" />
   </label>
 
-  <button class="k-button k-primary">Primary button</button>
+  <label class="k-form-field">
+    <span>
+     Content <span class="k-required">required</span>
+    </span>
+    <kendo-editor style="height: 300px" formControlName="txtContent" [value]=""></kendo-editor>
+</label>
+
+  <button class="k-button k-primary">Opslaan</button>
 </form>
 <!--
 <form [formGroup]="addBlogForm" (ngSubmit)="saveForm()" novalidate>

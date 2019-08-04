@@ -14,7 +14,8 @@ export class AuthInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         if (req.url.startsWith(this.basePath)) {
-            var accessToken = this.authService.getAccessToken();
+            // tslint:disable-next-line: prefer-const
+            let accessToken = this.authService.getAccessToken();
 
             const headers = req.headers.set('Authorization', `Bearer ${accessToken}`);
 

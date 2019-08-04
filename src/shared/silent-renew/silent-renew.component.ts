@@ -8,5 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SilentRenewComponent implements OnInit {
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+      console.log('renew of the token');
+    }
 }
