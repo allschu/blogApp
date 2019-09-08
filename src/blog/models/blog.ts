@@ -1,6 +1,8 @@
 export class BlogClass {
-  Title: string;
-  Introduction: string;
-  Text: string;
-  Author: string;
+  id: string;
+  title: string;
+  introduction: string;
+  text: string;
+  author: string;
+  dateCreated: string;
 }

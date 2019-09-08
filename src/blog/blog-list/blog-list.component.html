@@ -3,6 +3,7 @@
 [pageSize]="pageSize"
 [skip]="skip"
 [pageable]="true"
+(pageChange)="pageChange($event)"
 [sortable]="{
     allowUnsort: allowUnsort,
     mode: multiple ? 'multiple' : 'single'
@@ -10,6 +11,5 @@
   [sort]="sort"
   (sortChange)="sortChange($event)"
 >
-[height]="400"
-(pageChange)="pageChange($event)">
+  <kendo-grid-column *ngFor="let col of columns" [field]="col.field" [format]="col.format"></kendo-grid-column>
 </kendo-grid>
