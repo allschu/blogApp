@@ -37,7 +37,7 @@ export class AddBlogComponent implements OnInit, OnDestroy {
   saveForm() {
     if (this.addBlogForm.valid && this.addBlogForm.dirty) {
 
-      let blogToAdd: BlogClass;
+      let blogToAdd: any;
 
       blogToAdd = {
         Author: this.addBlogForm.value.txtAuthor,

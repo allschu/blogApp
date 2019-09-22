@@ -1,5 +1,37 @@
 <header>
-  <nav class='navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3'>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
+    <a class="navbar-brand" href="#">Menu</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-bar"></span>
+      <span class="navbar-toggler-bar"></span>
+      <span class="navbar-toggler-bar"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-menu">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#pk">Link</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a *ngIf="!isLoggedIn()" class="nav-link" (click)="login()">Login</a>
+          <a *ngIf="isLoggedIn()" class="nav-link" (click)="logout()">Logout</a>
+        </li>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
+            <li class="dropdown-header">Dropdown header</li>
+            <a class="dropdown-item" href="#pk">Action</a>
+            <a class="dropdown-item" href="#pk">Another action</a>
+            <a class="dropdown-item" href="#pk">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#pk">Separated link</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#pk">Another separated link</a>
+          </ul>
+        </div>
+      </ul>
+    </div>
+  </nav>
+  <!-- <nav class='navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3'>
     <div class="container">
       <a class="navbar-brand" [routerLink]='["/"]'>WebApp</a>
         <ul class="navbar-nav flex-grow">
@@ -24,5 +56,5 @@
           </li>
         </ul>
     </div>
-  </nav>
+  </nav> -->
 </header>

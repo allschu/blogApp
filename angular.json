@@ -25,12 +25,17 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@progress/kendo-theme-default/dist/all.css",
-              "src/styles.css"
+              "src/assets/css/paper-kit.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/paper-kit.min.js",
+              "src/assets/js/plugins/bootstrap-datepicker.js",
+              "src/assets/js/plugins/bootstrap-switch.js",
+              "src/assets/js/plugins/moment.min.js",
+              "src/assets/js/plugins/nouislider.min.js"
             ]
           },
           "configurations": {

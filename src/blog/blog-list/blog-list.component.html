@@ -1,15 +1,36 @@
-<kendo-grid
-[data]="gridView"
-[pageSize]="pageSize"
-[skip]="skip"
-[pageable]="true"
-(pageChange)="pageChange($event)"
-[sortable]="{
-    allowUnsort: allowUnsort,
-    mode: multiple ? 'multiple' : 'single'
-    }"
-  [sort]="sort"
-  (sortChange)="sortChange($event)"
->
-  <kendo-grid-column *ngFor="let col of columns" [field]="col.field" [format]="col.format"></kendo-grid-column>
-</kendo-grid>
+<h1 class="my-4">Blog list</h1>
+<div class="card mb-4">
+  <img class="card-img-top" src="http://placehold.it/750x300" />
+
+  <div class="card-body">
+    <h3>Post Title</h3>
+    <p class="card-text">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
+      aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta
+      expedita corporis animi vero voluptate voluptatibus possimus, veniam magni
+      quis!
+    </p>
+    <a href="" class="btn btn-primary">Read more</a>
+  </div>
+  <div class="card-footer text-muted">
+    Posted on January 1, 2017 by
+  </div>
+</div>
+
+<div class="card mb-4">
+  <img class="card-img-top" src="http://placehold.it/750x300" />
+
+  <div class="card-body">
+    <h3>Post Title</h3>
+    <p class="card-text">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
+      aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta
+      expedita corporis animi vero voluptate voluptatibus possimus, veniam magni
+      quis!
+    </p>
+    <a href="" class="btn btn-primary">Read more</a>
+  </div>
+  <div class="card-footer text-muted">
+    Posted on January 1, 2017 by
+  </div>
+</div>
