@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
 import { MenuItem } from './model/menuItem';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-menu',
@@ -20,7 +21,7 @@ export class NavMenuComponent implements OnInit {
     }
   ];
 
-  constructor(private authService: AuthServiceService) { }
+  constructor(private authService: AuthServiceService, private router: Router) { }
 
   ngOnInit() {
 
@@ -36,8 +37,8 @@ export class NavMenuComponent implements OnInit {
     foundMenuItem.selected = true;
   }
 
-  public login() {
-    this.authService.login();
+  public async login() {
+    await this.authService.login();
   }
 
   public logout() {

@@ -15,9 +15,6 @@ import { RouterModule } from '@angular/router';
 import { EditorModule } from '@progress/kendo-angular-editor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-//import { SilentRenewComponent } from 'src/shared/silent-renew/silent-renew.component';
-
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
 }
@@ -25,7 +22,6 @@ export function initializeApp(appConfig: AppConfig) {
   declarations: [
     AppComponent,
     ReturnComponent,
-    //SilentRenewComponent,
     NavMenuComponent
   ],
   imports: [
@@ -35,7 +31,6 @@ export function initializeApp(appConfig: AppConfig) {
     AngularFontAwesomeModule,
     RouterModule.forRoot([
       { path: 'authCallback', component: ReturnComponent }
-      //{ path: 'silentRedirect', component: SilentRenewComponent }
     ]),
     BlogModule,
     EditorModule,

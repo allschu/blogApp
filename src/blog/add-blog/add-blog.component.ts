@@ -18,16 +18,12 @@ export class AddBlogComponent implements OnInit, OnDestroy {
 
   insertedBlog: BlogClass;
 
-  addBlogForm = new FormGroup({
-    txtTitle: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    txtIntro: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    txtContent: new FormControl('', [Validators.required]),
-    txtAuthor: new FormControl('', [Validators.required])
-  });
+  addBlogForm: FormGroup;
 
   constructor(private blogService: BlogServiceService) { }
 
   ngOnInit() {
+    
   }
 
   ngOnDestroy() {

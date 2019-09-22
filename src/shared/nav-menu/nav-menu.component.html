@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
-    <a class="navbar-brand" href="#">Menu</a>
+    <a class="navbar-brand" [routerLink]="['/blog']" routerLinkActive="active" >Menu</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-bar"></span>
       <span class="navbar-toggler-bar"></span>
@@ -8,15 +8,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbar-menu">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#pk">Link</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/blog']">Home</a>
         </li>
-        <li class="nav-item" [routerLinkActive]='["link-active"]'>
+        <li class="nav-item" [routerLinkActive]='["active"]'>
           <a *ngIf="!isLoggedIn()" class="nav-link" (click)="login()">Login</a>
           <a *ngIf="isLoggedIn()" class="nav-link" (click)="logout()">Logout</a>
         </li>
-        <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div *ngIf="isLoggedIn()" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
           <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
             <li class="dropdown-header">Dropdown header</li>
             <a class="dropdown-item" href="#pk">Action</a>

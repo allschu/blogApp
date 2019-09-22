@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BlogServiceService } from './blog-service.service';
 import { EditorModule } from '@progress/kendo-angular-editor';
+import {AuthGuard} from '../shared/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,9 @@ import { EditorModule } from '@progress/kendo-angular-editor';
         {
           path: 'blog',
           children: [
-            { path: '', component: BlogListComponent, pathMatch: 'full' },
-            { path: 'add', component: AddBlogComponent, pathMatch: 'full' }
-            // { path: 'add', canActivate: [AuthBlogGuard], component: BlogAddComponent, pathMatch: 'full' },
+            { path: 'list', component: BlogListComponent, pathMatch: 'full' },
+            { path: 'add', component: AddBlogComponent, pathMatch: 'full' }, // canActivate: [AuthGuard],
+            { path: '**', redirectTo: 'list', pathMatch: 'full' }
           ]
         }
       ]),
