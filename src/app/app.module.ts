@@ -14,6 +14,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { EditorModule } from '@progress/kendo-angular-editor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -34,14 +35,15 @@ export function initializeApp(appConfig: AppConfig) {
     ]),
     BlogModule,
     EditorModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [AppConfig, , { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
       deps: [AppConfig], multi: true
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })

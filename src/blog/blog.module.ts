@@ -9,7 +9,8 @@ import { RouterModule } from '@angular/router';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BlogServiceService } from './blog-service.service';
 import { EditorModule } from '@progress/kendo-angular-editor';
-import {AuthGuard} from '../shared/guards/auth.guard';
+// import {AuthGuard} from '../shared/guards/auth.guard';
+import { NotifyService } from 'src/shared/notifications/toastrService';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,6 @@ import {AuthGuard} from '../shared/guards/auth.guard';
       ReactiveFormsModule
     ]
   ],
-  providers: [BlogServiceService]
+  providers: [BlogServiceService, NotifyService]
 })
 export class BlogModule {}

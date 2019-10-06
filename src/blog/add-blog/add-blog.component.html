@@ -1,43 +1,45 @@
 <h1 class="my-4">add blog</h1>
 <div class="card mb-4">
   <div class="card-body">
-    <form>
+    <form [formGroup]="addBlogForm" novalidate>
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+        <label for="title">Title</label>
         <input
-          type="email"
+          type="text"
           class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
+          id="title"
+          formControlName="inputTitle"
+          placeholder="Enter title"
         />
-        >
+        
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+        <label for="introduction">Introduction</label>
         <input
-          type="email"
+          type="text"
           class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
+          id="introduction"
+          formControlName="inputIntro"
+          placeholder="Enter introduction"
         />
-        >
+        
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+        <label for="author">Author</label>
         <input
-          type="email"
+          type="text"
           class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
+          id="author"
+          formControlName="inputAuthor"
+          placeholder="Enter author"
         />
-        <small id="emailHelp" class="form-text text-muted"
-          >We'll never share your email with anyone else.</small
-        >
       </div>
-      <a href="" class="btn btn-primary">Read more</a>
+      <div class="form-group">
+        <label for="author">Text</label>
+        <kendo-editor formControlName="inputText" (valueChange)="valueChange($event)" style="height: 400px;"></kendo-editor>
+
+      </div>
+      <a href="" class="btn btn-primary">Save blog</a>
     </form>
   </div>
 </div>

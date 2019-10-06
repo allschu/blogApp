@@ -4,5 +4,6 @@ export class BlogClass {
   introduction: string;
   text: string;
   author: string;
+  status: number;
   dateCreated: string;
 }
