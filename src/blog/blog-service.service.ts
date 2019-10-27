@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { BlogClass } from './models/blog';
 import { AppConfig } from 'src/app.config';
 import { AuthServiceService } from 'src/shared/auth-service.service';
+import { PaginatedResult } from './models/pagination';
 
 @Injectable({
   providedIn: 'root'
@@ -26,13 +27,28 @@ export class BlogServiceService {
       );
   }
 
-  getBlogs(): Observable<BlogClass[]> {
-    // let token = this.authService.getAccessToken();
-    // console.log(token);
-    // let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<BlogClass[]>(this.basePath + 'api/blog').pipe(
+  getBlogs(page?, itemsPerPage?): Observable<PaginatedResult<BlogClass[]>> {
+    const paginatedResult: PaginatedResult<BlogClass[]> = new PaginatedResult<BlogClass[]>();
+
+    let params = new HttpParams();
+
+    if (page !== null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
+    }
+
+    return this.http.get<BlogClass[]>(this.basePath + 'api/blog', { observe: 'response', params})
+    .pipe(
       tap(_ => console.log('fetched blogs')),
-      catchError(this.handleError<BlogClass[]>('getblogs', []))
+      map(response => {
+        
+        paginatedResult.result = response.body;
+        
+        if (response.headers.get('Pagination') != null) {
+          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+        }
+        return paginatedResult;
+      })
     );
   }
 
