@@ -41,12 +41,14 @@ export class BlogServiceService {
     .pipe(
       tap(_ => console.log('fetched blogs')),
       map(response => {
-        
+
         paginatedResult.result = response.body;
-        
+        console.log(response.headers.keys());
+
         if (response.headers.get('Pagination') != null) {
           paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
         }
+        
         return paginatedResult;
       })
     );

@@ -5,6 +5,7 @@ import { BlogServiceService } from '../blog-service.service';
 import { BlogClass } from '../models/blog';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Pagination } from '../models/pagination';
 
 @Component({
   selector: 'app-blog-list',
@@ -16,6 +17,7 @@ export class BlogListComponent implements OnInit, OnDestroy {
   private blogServiceSubscription: Subscription;
 
   private items: any[] = null;
+  pagination: Pagination;
 
   constructor(private blogService: BlogServiceService) {}
 
@@ -27,6 +29,7 @@ export class BlogListComponent implements OnInit, OnDestroy {
           item.dateCreated = new Date(item.dateCreated).toDateString();
         });
         this.items = values.result;
+        this.pagination = values.pagination;
       });
   }
 

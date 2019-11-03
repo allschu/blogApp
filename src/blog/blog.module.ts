@@ -11,13 +11,14 @@ import { BlogServiceService } from './blog-service.service';
 import { EditorModule } from '@progress/kendo-angular-editor';
 // import {AuthGuard} from '../shared/guards/auth.guard';
 import { NotifyService } from 'src/shared/notifications/toastrService';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [
     AddBlogComponent,
     BlogListComponent,
     EditBlogComponent,
-    DetailBlogComponent
+    DetailBlogComponent,
   ],
   imports: [
     [
@@ -33,6 +34,7 @@ import { NotifyService } from 'src/shared/notifications/toastrService';
       ]),
       CommonModule,
       GridModule,
+      PaginationModule.forRoot(),
       EditorModule,
       ReactiveFormsModule
     ]

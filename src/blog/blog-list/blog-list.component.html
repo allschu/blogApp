@@ -17,11 +17,6 @@
   </div>
 </div>
 <div>
-  <pager
-      [totalItems]="totalItems"
-      (pageChanged)="pageChanged($event)"
-      pageBtnClass="btn btn-outline-danger btn-lg"
-      [itemsPerPage]="10"
-      class="pull-left">
-    </pager>
+    <pagination [(ngModel)]="pagination.currentPage" [itemsPerPage]="pagination.itemsPerPage" [totalItems]="pagination.totalItems"></pagination>
+
 </div>
