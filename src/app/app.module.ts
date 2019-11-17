@@ -42,7 +42,7 @@ export function initializeApp(appConfig: AppConfig) {
     AdminModule,
     EditorModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot()     // ToastrModule added
+    ToastrModule.forRoot()     // ToastrModule added,
   ],
   providers: [AppConfig, , { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     {

@@ -12,6 +12,7 @@ import { EditorModule } from '@progress/kendo-angular-editor';
 // import {AuthGuard} from '../shared/guards/auth.guard';
 import { NotifyService } from 'src/shared/notifications/toastrService';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
       CommonModule,
       GridModule,
       PaginationModule.forRoot(),
+      NgxLoadingModule.forRoot({}),
       EditorModule,
       ReactiveFormsModule
     ]

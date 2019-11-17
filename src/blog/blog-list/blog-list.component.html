@@ -1,21 +1,40 @@
-<h1 class="my-4">blog list</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+        <h1 class="my-4">blog list</h1>
 
-<div *ngFor="let item of items">
-  <div class="card mb-4">
-    <img class="card-img-top" src="http://placehold.it/750x300" />
-  
-    <div class="card-body">
-      <h3>{{item.title}}</h3>
-      <p class="card-text">
-        {{item.introduction}}
-      </p>
-      <a href="" class="btn btn-primary">Read more</a>
+        <div *ngIf="loading">
+          <ngx-loading [show]="loading" [config]="{ 
+                backdropBackgroundColour: 'rgba(255,255,255,0.3)', backdropBorderRadius: '10px',
+                primaryColour: '#dd0031', secondaryColour: '#006ddd', tertiaryColour: '#ffffff'
+              }"></ngx-loading>
+        </div>
+    
+        <div *ngIf="!loading">
+          <div *ngFor="let item of items">
+            <div class="card mb-4">
+              <img class="card-img-top" src="http://placehold.it/750x300" />
+    
+              <div class="card-body">
+                <h3>{{item.title}}</h3>
+                <p class="card-text">
+                  {{item.introduction}}
+                </p>
+                <a href="" class="btn btn-primary">Read more</a>
+              </div>
+              <div class="card-footer text-muted">
+                Posted on {{item.dateCreated}} by {{item.author}}
+              </div>
+            </div>
+          </div>
+          <div>
+            <pagination [boundaryLinks]="true" [itemsPerPage]="pagination.ItemsPerPage" [(ngModel)]="pagination.CurrentPage"
+              [totalItems]="pagination.TotalItems" (pageChanged)="pageChanged($event)"></pagination>
+          </div>
+        </div>
     </div>
-    <div class="card-footer text-muted">
-      Posted on {{item.dateCreated}} by {{item.author}}
+    <div class="col-lg-4">
+        <h1 class="my-4">latest</h1>
     </div>
   </div>
-</div>
-<div>
-    <pagination [boundaryLinks]="true" [itemsPerPage]="pagination.ItemsPerPage" [(ngModel)]="pagination.CurrentPage" [totalItems]="pagination.TotalItems" (pageChanged)="pageChanged($event)"></pagination>
 </div>
