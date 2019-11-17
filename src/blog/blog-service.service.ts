@@ -16,7 +16,7 @@ export class BlogServiceService {
   constructor(
     private http: HttpClient,
     private authService: AuthServiceService
-  ) {}
+  ) { }
 
   addBlog(blogToPost: BlogClass): Observable<BlogClass> {
     return this.http
@@ -37,21 +37,21 @@ export class BlogServiceService {
       params = params.append('pageSize', itemsPerPage);
     }
 
-    return this.http.get<BlogClass[]>(this.basePath + 'api/blog', { observe: 'response', params})
-    .pipe(
-      tap(_ => console.log('fetched blogs')),
-      map(response => {
+    return this.http.get<BlogClass[]>(this.basePath + 'api/blog', { observe: 'response', params })
+      .pipe(
+        tap(_ => console.log('fetched blogs')),
+        map(response => {
 
-        paginatedResult.result = response.body;
-        console.log(response.headers.keys());
+          paginatedResult.result = response.body;
+          console.log(response.headers.keys());
 
-        if (response.headers.get('Pagination') != null) {
-          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
-        }
-        
-        return paginatedResult;
-      })
-    );
+          if (response.headers.get('Pagination') != null) {
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+          }
+
+          return paginatedResult;
+        })
+      );
   }
 
   /**

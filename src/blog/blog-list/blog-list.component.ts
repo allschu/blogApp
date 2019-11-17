@@ -16,10 +16,10 @@ export class BlogListComponent implements OnInit, OnDestroy {
   // Subscriptions
   private blogServiceSubscription: Subscription;
 
-  private items: any[] = null;
+  items: any[] = null;
   pagination: Pagination;
 
-  constructor(private blogService: BlogServiceService) {}
+  constructor(private blogService: BlogServiceService) { }
 
   ngOnInit() {
     this.blogServiceSubscription = this.blogService
@@ -38,5 +38,19 @@ export class BlogListComponent implements OnInit, OnDestroy {
   }
 
 
+  pageChanged(event: any): void {
+    this.pagination.currentPage = event.page;
+    this.loadBlogs();
+  }
+
+  loadBlogs() {
+    this.blogService.getBlogs(this.pagination.currentPage, 10).subscribe(values => {
+      values.result.map(item => {
+        item.dateCreated = new Date(item.dateCreated).toDateString();
+      });
+      this.items = values.result;
+      this.pagination = values.pagination;
+    });
+  }
 
 }
