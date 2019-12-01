@@ -13,6 +13,7 @@ import { NotifyService } from 'src/shared/notifications/toastrService';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BlogAdministrationComponent } from './blog-administration/blog-administration.component';
 import { AuthGuard } from 'src/shared/guards/auth.guard';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AuthGuard } from 'src/shared/guards/auth.guard';
       CommonModule,
       GridModule,
       PaginationModule.forRoot(),
+      NgxLoadingModule.forRoot({}),
       EditorModule,
       ReactiveFormsModule
     ]

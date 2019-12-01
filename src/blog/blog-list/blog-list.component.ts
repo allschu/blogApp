@@ -16,24 +16,21 @@ export class BlogListComponent implements OnInit, OnDestroy {
   // Subscriptions
   private blogServiceSubscription: Subscription;
 
-  private items: any[] = null;
-  pagination: Pagination;
   loading = false;
 
-  constructor(private blogService: BlogServiceService) {}
+  items: any[] = null;
+  pagination: Pagination;
+
+  constructor(private blogService: BlogServiceService) { }
 
   ngOnInit() {
-    this.loading = true;
-    this.blogServiceSubscription = this.blogService
-      .getBlogs(1, 10)
-      .subscribe(values => {
-        values.result.map(item => {
-          item.dateCreated = new Date(item.dateCreated).toDateString();
-        });
-        this.items = values.result;
-        this.pagination = values.pagination;
-        this.loading = false;
-      });
+    console.log('init');
+    if (this.pagination) {
+      this.loadBlogs(this.pagination.CurrentPage);
+    } else {
+      console.log('load page 1');
+      this.loadBlogs(1);
+    }
   }
 
   ngOnDestroy() {
@@ -41,5 +38,25 @@ export class BlogListComponent implements OnInit, OnDestroy {
   }
 
 
+  pageChanged(event: any): void {
+    // watch out this pageChanged event can cause a loop, always check if you need to change
+    if (this.pagination.CurrentPage !== event.page) {
+      this.pagination.CurrentPage = event.page;
+      console.log(`ask voor page ${this.pagination.CurrentPage}`);
+      this.loadBlogs(this.pagination.CurrentPage);
+    }
+  }
+
+  loadBlogs(pageNumber: number) {
+    this.loading = true;
+    this.blogServiceSubscription = this.blogService.getBlogs(pageNumber, 10).subscribe(values => {
+      values.result.map(item => {
+        item.dateCreated = new Date(item.dateCreated).toDateString();
+      });
+      this.items = values.result;
+      this.pagination = values.pagination;
+      this.loading = false;
+    });
+  }
 
 }

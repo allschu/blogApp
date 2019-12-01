@@ -67,17 +67,6 @@ export class AuthServiceService {
     });
   }
 
-  // isLoggedInObs(): Observable<boolean> {
-  //   return from(this._userManager.getUser()).pipe(map<User, boolean>((user) => {
-  //     if (user) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   }));
-  // }
-  
-
   isLoggedIn(): boolean {
     console.log(this._user != null);
     return this._user != null && !this._user.expired;
