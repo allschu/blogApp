@@ -1,5 +1,6 @@
-<h1 class="my-4">blog list</h1>
+<h1 class="my-4">latest blogs</h1>
 
+<div *ngIf="loading">loading blogs ...</div>
 <div *ngFor="let item of items">
   <div class="card mb-4">
     <img class="card-img-top" src="http://placehold.it/750x300" />

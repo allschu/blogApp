@@ -18,10 +18,12 @@ export class BlogListComponent implements OnInit, OnDestroy {
 
   private items: any[] = null;
   pagination: Pagination;
+  loading = false;
 
   constructor(private blogService: BlogServiceService) {}
 
   ngOnInit() {
+    this.loading = true;
     this.blogServiceSubscription = this.blogService
       .getBlogs(1, 10)
       .subscribe(values => {
@@ -30,6 +32,7 @@ export class BlogListComponent implements OnInit, OnDestroy {
         });
         this.items = values.result;
         this.pagination = values.pagination;
+        this.loading = false;
       });
   }
 

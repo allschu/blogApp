@@ -18,14 +18,10 @@
         <div *ngIf="isLoggedIn()" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
           <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
-            <li class="dropdown-header">Dropdown header</li>
-            <a class="dropdown-item" href="#pk">Action</a>
-            <a class="dropdown-item" href="#pk">Another action</a>
-            <a class="dropdown-item" href="#pk">Something else here</a>
+            <li class="dropdown-header">Blog administration</li>
+            <a class="dropdown-item" [routerLink]="['/blog/add']" routerLinkActive="router-link-active">Toevoegen blog</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#pk">Separated link</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#pk">Another separated link</a>
+            <a class="dropdown-item" [routerLink]="['/blog']" routerLinkActive="router-link-active">Blog overview</a>
           </ul>
         </div>
       </ul>

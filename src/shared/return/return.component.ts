@@ -11,7 +11,6 @@ export class ReturnComponent implements OnInit {
   constructor(private authService: AuthServiceService) { }
 
   ngOnInit() {
-    console.log('call completion');
     this.authService.completeAuthentication();
   }
 

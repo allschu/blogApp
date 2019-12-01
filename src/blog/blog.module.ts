@@ -9,9 +9,10 @@ import { RouterModule } from '@angular/router';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BlogServiceService } from './blog-service.service';
 import { EditorModule } from '@progress/kendo-angular-editor';
-// import {AuthGuard} from '../shared/guards/auth.guard';
 import { NotifyService } from 'src/shared/notifications/toastrService';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { BlogAdministrationComponent } from './blog-administration/blog-administration.component';
+import { AuthGuard } from 'src/shared/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     BlogListComponent,
     EditBlogComponent,
     DetailBlogComponent,
+    BlogAdministrationComponent,
   ],
   imports: [
     [
@@ -27,7 +29,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
           path: 'blog',
           children: [
             { path: 'list', component: BlogListComponent, pathMatch: 'full' },
-            { path: 'add', component: AddBlogComponent, pathMatch: 'full' }, // canActivate: [AuthGuard],
+            { path: 'add', component: AddBlogComponent, pathMatch: 'full' },
+            { path: 'admin', component: BlogAdministrationComponent, pathMatch: 'full', canActivate: [AuthGuard]},
             { path: '**', redirectTo: 'list', pathMatch: 'full' }
           ]
         }
@@ -39,6 +42,6 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
       ReactiveFormsModule
     ]
   ],
-  providers: [BlogServiceService, NotifyService]
+  providers: [AuthGuard, BlogServiceService, NotifyService]
 })
 export class BlogModule {}

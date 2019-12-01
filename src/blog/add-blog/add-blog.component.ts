@@ -26,7 +26,7 @@ export class AddBlogComponent implements OnInit, OnDestroy {
 
   addBlogForm: FormGroup;
 
-  constructor(private blogService: BlogServiceService, private notifyService: NotifyService) {}
+  constructor(private blogService: BlogServiceService, private notifyService: NotifyService) { }
 
   ngOnInit() {
     this.addBlogForm = new FormGroup({
@@ -39,7 +39,7 @@ export class AddBlogComponent implements OnInit, OnDestroy {
     this.notifyService.success('hhuuuurrraayyy');
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 
   saveForm() {
     if (this.addBlogForm.valid && this.addBlogForm.dirty) {
@@ -52,14 +52,14 @@ export class AddBlogComponent implements OnInit, OnDestroy {
         Title: this.addBlogForm.value.inputTitle
       };
 
-      this.blogService
-        .addBlog(blogToAdd)
-        .subscribe(
-          () => console.log('blog saved'),
-          (error: any) => console.log('ERROR: ' + error)
-        );
+      this.blogService.addBlog(blogToAdd).subscribe(() => {
+        this.notifyService.success('Blog successfully saved');
+      },
+        (error: any) => {
+          this.notifyService.error(error);
+        });
     }
   }
 
-  public valueChange(value: any): void {}
+  public valueChange(value: any): void { }
 }

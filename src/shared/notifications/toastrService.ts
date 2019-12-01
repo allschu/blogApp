@@ -1,5 +1,11 @@
+/*
+WRAPPER AROUND THE TOASTR SERVICE
+*/
+
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { reject } from 'q';
+import { resolve } from 'url';
 
 @Injectable()
 export class NotifyService {
@@ -13,8 +19,10 @@ export class NotifyService {
     this.toastr.warning(message);
   }
 
-  error(message: string) {
-    this.toastr.error(message);
+  async error(message: string) {
+    return new Promise<any>((resolve, reject) => {
+      resolve(this.toastr.error(message));
+    });
   }
 
   success(message: string) {
