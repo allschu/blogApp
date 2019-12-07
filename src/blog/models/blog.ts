@@ -6,4 +6,5 @@ export class BlogClass {
   author: string;
   status: number;
   dateCreated: string;
+  dateModified: string;
 }

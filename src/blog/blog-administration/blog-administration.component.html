@@ -1,3 +1,39 @@
-<p>
-  blog-administration works!
-</p>
+<div class="container">
+  <div class="row">
+    <h2>
+      blog administration
+    </h2>
+  </div>
+  <div *ngIf="loading">
+    <ngx-loading [show]="loading" [config]="{ 
+            backdropBackgroundColour: 'rgba(255,255,255,0.3)', backdropBorderRadius: '10px',
+            primaryColour: '#dd0031', secondaryColour: '#006ddd', tertiaryColour: '#ffffff'
+          }"></ngx-loading>
+  </div>
+  <div *ngIf="!loading" class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">title</th>
+          <th scope="col">Created</th>
+          <th scope="col">Modified</th>
+          <th scope="col">Delete</th>
+          <th scope="col">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <th scope="row">1</th>
+          <td>{{item.title}}</td>
+          <td>{{item.dateCreated}}</td>
+          <td>{{item.dateModified}}</td>
+          <td><a href="./Blog/Delete/{{item.id}}"><fa-icon [icon]="faTrash"></fa-icon></a></td>
+          <td><a href="./Blog/Edit/{{item.id}}"><fa-icon [icon]="faEdit"></fa-icon></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination [boundaryLinks]="true" [itemsPerPage]="pagination.ItemsPerPage" [(ngModel)]="pagination.CurrentPage"
+              [totalItems]="pagination.TotalItems" (pageChanged)="pageChanged($event)"></pagination>
+  </div>
+</div>

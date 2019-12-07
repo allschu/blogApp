@@ -14,6 +14,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BlogAdministrationComponent } from './blog-administration/blog-administration.component';
 import { AuthGuard } from 'src/shared/guards/auth.guard';
 import { NgxLoadingModule } from 'ngx-loading';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -31,13 +32,15 @@ import { NgxLoadingModule } from 'ngx-loading';
           children: [
             { path: 'list', component: BlogListComponent, pathMatch: 'full' },
             { path: 'add', component: AddBlogComponent, pathMatch: 'full' },
-            { path: 'admin', component: BlogAdministrationComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+            { path: 'detail', component: DetailBlogComponent, pathMatch: 'full' },
+            { path: 'admin', component: BlogAdministrationComponent, pathMatch: 'full'}, //canActivate: [AuthGuard]},
             { path: '**', redirectTo: 'list', pathMatch: 'full' }
           ]
         }
       ]),
       CommonModule,
       GridModule,
+      FontAwesomeModule,
       PaginationModule.forRoot(),
       NgxLoadingModule.forRoot({}),
       EditorModule,

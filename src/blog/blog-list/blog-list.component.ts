@@ -13,6 +13,7 @@ import { Pagination } from '../models/pagination';
   styleUrls: ['./blog-list.component.css']
 })
 export class BlogListComponent implements OnInit, OnDestroy {
+
   // Subscriptions
   private blogServiceSubscription: Subscription;
 
@@ -24,11 +25,9 @@ export class BlogListComponent implements OnInit, OnDestroy {
   constructor(private blogService: BlogServiceService) { }
 
   ngOnInit() {
-    console.log('init');
     if (this.pagination) {
       this.loadBlogs(this.pagination.CurrentPage);
     } else {
-      console.log('load page 1');
       this.loadBlogs(1);
     }
   }
@@ -42,7 +41,6 @@ export class BlogListComponent implements OnInit, OnDestroy {
     // watch out this pageChanged event can cause a loop, always check if you need to change
     if (this.pagination.CurrentPage !== event.page) {
       this.pagination.CurrentPage = event.page;
-      console.log(`ask voor page ${this.pagination.CurrentPage}`);
       this.loadBlogs(this.pagination.CurrentPage);
     }
   }

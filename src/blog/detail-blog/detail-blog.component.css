@@ -1,0 +1,9 @@
+.blog-post-title{
+    font-family: 'Ubuntu', sans-serif;
+    margin-bottom: .25rem;
+}
+.blog-post-meta{
+    font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 1.25rem;
+    color: #999;
+}
